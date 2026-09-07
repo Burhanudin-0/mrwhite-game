@@ -1,0 +1,7 @@
+{
+  "name": "mrwhite-undercover-game",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Game party Mr. White & Undercover dengan kata yang digenerate AI"
+}

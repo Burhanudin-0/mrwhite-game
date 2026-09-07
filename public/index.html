@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<title>Mr. White & Undercover</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- SCREEN: SETUP -->
+    <section id="screen-setup" class="screen active">
+      <h1>🎭 Mr. White<br /><span class="sub">&amp; Undercover</span></h1>
+
+      <div class="card">
+        <label>Jumlah Pemain</label>
+        <div class="stepper">
+          <button id="btn-dec-players" class="step-btn">−</button>
+          <span id="player-count">6</span>
+          <button id="btn-inc-players" class="step-btn">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <label>Jumlah Undercover</label>
+        <div class="stepper">
+          <button id="btn-dec-undercover" class="step-btn">−</button>
+          <span id="undercover-count">1</span>
+          <button id="btn-inc-undercover" class="step-btn">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <label>Jumlah Mr. White</label>
+        <div class="stepper">
+          <button id="btn-dec-white" class="step-btn">−</button>
+          <span id="white-count">1</span>
+          <button id="btn-inc-white" class="step-btn">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <label>Kategori Kata (opsional)</label>
+        <input id="category-input" type="text" placeholder="mis. makanan, hewan, profesi..." />
+      </div>
+
+      <p id="setup-error" class="error-text"></p>
+
+      <button id="btn-start" class="btn-primary">Mulai Permainan</button>
+      <p class="hint">Kartu akan digenerate ulang oleh AI setiap permainan, jadi katanya gak itu-itu aja.</p>
+    </section>
+
+    <!-- SCREEN: LOADING -->
+    <section id="screen-loading" class="screen">
+      <div class="spinner"></div>
+      <p>Membuat pasangan kata baru...</p>
+    </section>
+
+    <!-- SCREEN: REVEAL (pass-the-phone) -->
+    <section id="screen-reveal" class="screen">
+      <p class="progress-text" id="reveal-progress"></p>
+      <div class="reveal-card" id="reveal-card">
+        <p class="player-name" id="reveal-player-name">Pemain 1</p>
+        <p class="reveal-instruction">Pastikan hanya kamu yang lihat layar ini,<br />lalu tap kartu untuk buka.</p>
+        <div class="word-box" id="word-box">
+          <span id="tap-hint">👆 Tap untuk lihat kartu</span>
+        </div>
+      </div>
+      <button id="btn-next-player" class="btn-primary" disabled>Lanjut ke Pemain Berikutnya</button>
+    </section>
+
+    <!-- SCREEN: PLAY (reference/discussion phase) -->
+    <section id="screen-play" class="screen">
+      <h2>Semua Kartu Sudah Dibagikan</h2>
+      <p class="hint">Sekarang mulai giliran deskripsi kata, diskusi, lalu voting seperti aturan biasa.</p>
+
+      <div class="card summary-card">
+        <p><strong>Jumlah Pemain:</strong> <span id="summary-players"></span></p>
+        <p><strong>Undercover:</strong> <span id="summary-undercover"></span></p>
+        <p><strong>Mr. White:</strong> <span id="summary-white"></span></p>
+      </div>
+
+      <button id="btn-reveal-answer" class="btn-secondary">Lihat Jawaban (untuk wasit)</button>
+      <div id="answer-box" class="answer-box hidden"></div>
+
+      <button id="btn-new-game" class="btn-primary">Main Ronde Baru</button>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -304,3 +304,140 @@ h2 {
 .answer-box .label { color: var(--ink-dim); }
 
 #btn-new-game { margin-top: auto; }
+
+/* PLAYER NAMES */
+.player-names-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.player-name-input {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: var(--ink);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+}
+.player-name-input:focus {
+  outline: 2px solid var(--accent-civilian);
+  outline-offset: 1px;
+}
+
+/* STATS */
+.stats-card { margin-top: 6px; }
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-card);
+  border-radius: 10px;
+  padding: 12px 8px;
+}
+.stat-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+}
+.stat-num.stat-civilian { color: var(--accent-civilian); }
+.stat-num.stat-undercover { color: var(--accent-undercover); }
+.stat-num.stat-white { color: var(--accent-white); }
+.stat-label {
+  font-size: 11px;
+  color: var(--ink-dim);
+  text-align: center;
+}
+
+/* VOTE SCREEN */
+.vote-player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.vote-player-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  color: var(--ink);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+.vote-player-btn:active { transform: scale(0.98); }
+.vote-player-btn.selected {
+  border-color: var(--accent-civilian);
+  background: rgba(79,184,163,0.1);
+}
+.vote-player-btn.eliminated {
+  opacity: 0.35;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+.vote-player-btn .role-reveal-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.vote-role-buttons {
+  display: flex;
+  gap: 10px;
+}
+.vote-role-btn {
+  flex: 1;
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 14px 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.vote-role-btn:active { transform: scale(0.97); }
+.vote-role-btn.selected.guess-undercover { border-color: var(--accent-undercover); background: rgba(209,73,91,0.12); color: var(--accent-undercover); }
+.vote-role-btn.selected.guess-white { border-color: var(--accent-white); background: rgba(232,193,79,0.12); color: var(--accent-white); }
+
+#white-guess-input {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--ink);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+}
+
+.hidden { display: none !important; }
+
+/* GAME OVER */
+#gameover-summary p { margin: 0 0 8px; font-size: 14px; line-height: 1.6; }
+#gameover-summary p:last-child { margin-bottom: 0; }
+.winner-banner {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 4px 0 12px;
+}
+.winner-banner.win-civilian { color: var(--accent-civilian); }
+.winner-banner.win-undercover { color: var(--accent-undercover); }
+.winner-banner.win-white { color: var(--accent-white); }

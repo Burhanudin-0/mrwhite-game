@@ -22,6 +22,11 @@
         </div>
       </div>
 
+      <div class="card" id="player-names-card">
+        <label>Nama Pemain</label>
+        <div id="player-names-list" class="player-names-list"></div>
+      </div>
+
       <div class="card">
         <label>Jumlah Undercover</label>
         <div class="stepper">
@@ -48,7 +53,21 @@
       <p id="setup-error" class="error-text"></p>
 
       <button id="btn-start" class="btn-primary">Mulai Permainan</button>
-      <p class="hint">Kartu akan digenerate ulang oleh AI setiap permainan, jadi katanya gak itu-itu aja.</p>
+      <p class="hint">Kartu akan digenerate ulang oleh AI setiap permainan, jadi katanya gak itu-itu aja. Kata yang sudah pernah muncul otomatis tidak akan diulang.</p>
+
+      <button id="btn-reset-history" class="btn-secondary">Reset Riwayat Kata</button>
+      <p id="reset-status" class="hint"></p>
+
+      <div class="card stats-card" id="stats-card">
+        <label>Statistik Permainan</label>
+        <div class="stats-grid">
+          <div class="stat-item"><span class="stat-num" id="stat-total">0</span><span class="stat-label">Total Ronde</span></div>
+          <div class="stat-item"><span class="stat-num stat-civilian" id="stat-civilian">0</span><span class="stat-label">Civilian Menang</span></div>
+          <div class="stat-item"><span class="stat-num stat-undercover" id="stat-undercover">0</span><span class="stat-label">Undercover Menang</span></div>
+          <div class="stat-item"><span class="stat-num stat-white" id="stat-white">0</span><span class="stat-label">Mr. White Menang</span></div>
+        </div>
+        <button id="btn-reset-stats" class="btn-secondary">Reset Statistik</button>
+      </div>
     </section>
 
     <!-- SCREEN: LOADING -->
@@ -70,10 +89,10 @@
       <button id="btn-next-player" class="btn-primary" disabled>Lanjut ke Pemain Berikutnya</button>
     </section>
 
-    <!-- SCREEN: PLAY (reference/discussion phase) -->
+    <!-- SCREEN: PLAY (discussion phase, before voting starts) -->
     <section id="screen-play" class="screen">
       <h2>Semua Kartu Sudah Dibagikan</h2>
-      <p class="hint">Sekarang mulai giliran deskripsi kata, diskusi, lalu voting seperti aturan biasa.</p>
+      <p class="hint">Mulai giliran deskripsi kata dan diskusi. Kalau sudah siap voting, wasit tekan tombol di bawah untuk menandai siapa yang dicurigai.</p>
 
       <div class="card summary-card">
         <p><strong>Jumlah Pemain:</strong> <span id="summary-players"></span></p>
@@ -81,8 +100,58 @@
         <p><strong>Mr. White:</strong> <span id="summary-white"></span></p>
       </div>
 
-      <button id="btn-reveal-answer" class="btn-secondary">Lihat Jawaban (untuk wasit)</button>
-      <div id="answer-box" class="answer-box hidden"></div>
+      <button id="btn-goto-vote" class="btn-primary">Mulai Voting</button>
+    </section>
+
+    <!-- SCREEN: VOTE (wasit menunjuk kartu & tebak role) -->
+    <section id="screen-vote" class="screen">
+      <h2>Voting</h2>
+      <p class="hint" id="vote-alive-hint"></p>
+
+      <div class="card">
+        <label>Pemain mana yang dicurigai?</label>
+        <div id="vote-player-list" class="vote-player-list"></div>
+      </div>
+
+      <div class="card" id="vote-role-card" style="display:none;">
+        <label>Ditebak sebagai apa?</label>
+        <div class="vote-role-buttons">
+          <button class="vote-role-btn" data-guess="undercover">Undercover</button>
+          <button class="vote-role-btn" data-guess="white">Mr. White</button>
+        </div>
+      </div>
+
+      <div id="vote-result-box" class="answer-box hidden"></div>
+
+      <div class="card" id="white-guess-card" style="display:none;">
+        <label>Mr. White menebak kata Civilian:</label>
+        <input id="white-guess-input" type="text" placeholder="Ketik tebakan kata..." />
+        <div class="vote-role-buttons" style="margin-top:10px;">
+          <button id="btn-white-correct" class="btn-primary" style="margin:0;">Tebakan Benar</button>
+          <button id="btn-white-wrong" class="btn-secondary" style="margin:0;">Tebakan Salah</button>
+        </div>
+      </div>
+
+      <button id="btn-continue-round" class="btn-primary hidden">Lanjut Diskusi Ronde Ini</button>
+    </section>
+
+    <!-- SCREEN: GAME OVER (hasil ronde + statistik) -->
+    <section id="screen-gameover" class="screen">
+      <h2 id="gameover-title">Ronde Selesai</h2>
+      <div class="card" id="gameover-summary"></div>
+
+      <button id="btn-show-final-answer" class="btn-secondary">Lihat Kata Lengkap</button>
+      <div id="final-answer-box" class="answer-box hidden"></div>
+
+      <div class="card stats-card">
+        <label>Statistik Permainan</label>
+        <div class="stats-grid">
+          <div class="stat-item"><span class="stat-num" id="go-stat-total">0</span><span class="stat-label">Total Ronde</span></div>
+          <div class="stat-item"><span class="stat-num stat-civilian" id="go-stat-civilian">0</span><span class="stat-label">Civilian Menang</span></div>
+          <div class="stat-item"><span class="stat-num stat-undercover" id="go-stat-undercover">0</span><span class="stat-label">Undercover Menang</span></div>
+          <div class="stat-item"><span class="stat-num stat-white" id="go-stat-white">0</span><span class="stat-label">Mr. White Menang</span></div>
+        </div>
+      </div>
 
       <button id="btn-new-game" class="btn-primary">Main Ronde Baru</button>
     </section>
